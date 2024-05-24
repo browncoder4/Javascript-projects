@@ -1,0 +1,18 @@
+function countdownTimer() {
+    let time = parseInt(prompt("Enter the number of seconds for the countdown:"));
+
+    function tick() {
+        if (time > 0) {
+            console.log(time);
+            time--;
+            setTimeout(tick, 1000);
+        } else {
+            console.log("Time's up!");
+        }
+    }
+
+    tick();
+}
+
+countdownTimer();
+
