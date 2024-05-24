@@ -1,0 +1,74 @@
+let todoList = [];
+
+function showMenu() {
+    let choice = prompt(
+        "To-Do List Menu:\n" +
+        "1. View To-Do List\n" +
+        "2. Add Task\n" +
+        "3. Delete Task\n" +
+        "4. Exit\n" +
+        "Enter your choice (1-4):"
+    );
+
+    switch (choice) {
+        case '1':
+            viewTasks();
+            break;
+        case '2':
+            addTask();
+            break;
+        case '3':
+            deleteTask();
+            break;
+        case '4':
+            exitApp();
+            break;
+        default:
+            alert("Invalid choice. Please enter a number between 1 and 4.");
+            showMenu();
+            break;
+    }
+}
+
+function viewTasks() {
+    if (todoList.length === 0) {
+        alert("Your to-do list is empty.");
+    } else {
+        let tasks = "To-Do List:\n";
+        todoList.forEach((task, index) => {
+            tasks += `${index + 1}. ${task}\n`;
+        });
+        alert(tasks);
+    }
+    showMenu();
+}
+
+function addTask() {
+    let newTask = prompt("Enter the new task:");
+    if (newTask) {
+        todoList.push(newTask);
+        alert(`Task "${newTask}" added to the list.`);
+    } else {
+        alert("Task cannot be empty.");
+    }
+    showMenu();
+}
+
+function deleteTask() {
+    let taskNumber = prompt("Enter the task number to delete:");
+    let index = parseInt(taskNumber) - 1; 
+
+    if (index >= 0 && index < todoList.length) {
+        let deletedTask = todoList.splice(index, 1);
+        alert(`Task "${deletedTask}" deleted from the list.`);
+    } else {
+        alert("Invalid task number.");
+    }
+    showMenu();
+}
+
+function exitApp() {
+    alert("Exiting To-Do List application. Goodbye!");
+}
+
+showMenu();
