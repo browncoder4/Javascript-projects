@@ -1,0 +1,21 @@
+function rockPaperScissors() {
+    const choices = ["rock", "paper", "scissors"];
+    const userChoice = prompt("Enter rock, paper, or scissors:");
+    const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+    alert("Computer chose " + computerChoice);
+
+    if (userChoice === computerChoice) {
+        alert("It's a tie!");
+    } else if (
+        (userChoice === "rock" && computerChoice === "scissors") ||
+        (userChoice === "paper" && computerChoice === "rock") ||
+        (userChoice === "scissors" && computerChoice === "paper")
+    ) {
+        alert("You win!");
+    } else {
+        alert("You lose!");
+    }
+}
+
+rockPaperScissors();
